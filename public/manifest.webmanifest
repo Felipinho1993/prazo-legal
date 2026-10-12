@@ -1,0 +1,19 @@
+{
+  "name": "Prazo Legal — Agenda Jurídica",
+  "short_name": "Prazo Legal",
+  "description": "Controle de prazos processuais, audiências e reuniões.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f7f4",
+  "theme_color": "#123330",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

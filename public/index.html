@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#102c2a" />
+    <meta
+      name="description"
+      content="Organize prazos processuais, audiências e reuniões em uma agenda jurídica simples e segura."
+    />
+    <title>Prazo Legal — Agenda jurídica inteligente</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <noscript>
+      <div class="noscript">Ative o JavaScript para usar o Prazo Legal.</div>
+    </noscript>
+
+    <section class="auth-shell" id="authView" aria-labelledby="authTitle">
+      <div class="auth-showcase">
+        <a class="brand brand--light" href="#" aria-label="Prazo Legal — início">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 32 32"><path d="M16 3.4 28 9.8v12.4L16 28.6 4 22.2V9.8L16 3.4Z"/><path d="M11 16.2 14.3 19.5 21.6 12.2"/></svg>
+          </span>
+          <span>Prazo <strong>Legal</strong></span>
+        </a>
+
+        <div class="showcase-copy">
+          <span class="eyebrow eyebrow--light">Rotina jurídica sob controle</span>
+          <h1>Seus prazos merecem mais do que memória e planilhas.</h1>
+          <p>Centralize compromissos, visualize riscos e comece o dia sabendo exatamente o que precisa de atenção.</p>
+          <div class="showcase-proof">
+            <div class="proof-avatars" aria-hidden="true">
+              <span>AM</span><span>RC</span><span>LF</span>
+            </div>
+            <p><strong>Visão clara, todos os dias.</strong><br />Feito para advogados e pequenos escritórios.</p>
+          </div>
+        </div>
+
+        <div class="showcase-preview" aria-hidden="true">
+          <div class="preview-top"><span></span><span></span><span></span></div>
+          <div class="preview-body">
+            <div class="preview-date"><small>PRÓXIMO PRAZO</small><strong>14</strong><span>OUT</span></div>
+            <div class="preview-copy"><span>Contestação • Proc. 1008421-55</span><strong>Almeida &amp; Souza</strong><small>Faltam 2 dias</small></div>
+            <div class="preview-check">✓</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="auth-panel">
+        <div class="auth-card">
+          <div class="auth-heading">
+            <span class="mobile-brand">
+              <span class="brand-mark" aria-hidden="true">
+                <svg viewBox="0 0 32 32"><path d="M16 3.4 28 9.8v12.4L16 28.6 4 22.2V9.8L16 3.4Z"/><path d="M11 16.2 14.3 19.5 21.6 12.2"/></svg>
+              </span>
+              Prazo <strong>Legal</strong>
+            </span>
+            <span class="eyebrow">Bem-vindo</span>
+            <h2 id="authTitle">Acesse seu escritório</h2>
+            <p id="authSubtitle">Entre para acompanhar seus próximos compromissos.</p>
+          </div>
+
+          <div class="auth-tabs" role="tablist" aria-label="Opções de acesso">
+            <button class="auth-tab is-active" type="button" role="tab" aria-selected="true" data-auth-tab="login">Entrar</button>
+            <button class="auth-tab" type="button" role="tab" aria-selected="false" data-auth-tab="signup">Criar conta</button>
+          </div>
+
+          <form id="authForm" novalidate>
+            <div class="field" id="nameField" hidden>
+              <label for="authName">Nome completo</label>
+              <div class="input-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M20 21a8 8 0 0 0-16 0M12 13a5 5 0 1 0 0-10 5 5 0 0 0 0 10Z"/></svg>
+                <input id="authName" name="name" type="text" autocomplete="name" placeholder="Seu nome" />
+              </div>
+            </div>
+            <div class="field">
+              <label for="authEmail">E-mail</label>
+              <div class="input-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 6 9 7 9-7M5 20h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2Z"/></svg>
+                <input id="authEmail" name="email" type="email" autocomplete="email" placeholder="voce@escritorio.com.br" required />
+              </div>
+            </div>
+            <div class="field">
+              <div class="field-label-row">
+                <label for="authPassword">Senha</label>
+                <button class="text-button" id="forgotPassword" type="button">Esqueci minha senha</button>
+              </div>
+              <div class="input-wrap">
+                <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+                <input id="authPassword" name="password" type="password" autocomplete="current-password" placeholder="Mínimo de 10 caracteres" minlength="10" maxlength="128" required />
+                <button class="icon-button input-action" id="togglePassword" type="button" aria-label="Mostrar senha">
+                  <svg viewBox="0 0 24 24"><path d="M2.5 12s3.5-6 9.5-6 9.5 6 9.5 6-3.5 6-9.5 6-9.5-6-9.5-6Z"/><circle cx="12" cy="12" r="2.5"/></svg>
+                </button>
+              </div>
+            </div>
+            <label class="check-row" id="rememberField">
+              <input id="rememberMe" type="checkbox" checked />
+              <span>Lembrar meu acesso neste dispositivo</span>
+            </label>
+            <div class="form-alert" id="authAlert" role="alert" hidden></div>
+            <button class="button button--primary button--wide" id="authSubmit" type="submit">
+              <span>Entrar na plataforma</span>
+              <svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+            </button>
+          </form>
+
+          <div class="demo-access" id="demoAccess" hidden>
+            <span>ou explore antes de configurar</span>
+            <button class="button button--ghost button--wide" id="demoLogin" type="button">Acessar conta demonstrativa</button>
+            <small>Login local: advogado@demo.com • senha 123456</small>
+          </div>
+
+          <p class="auth-legal">Ao continuar, você concorda com os Termos de Uso e a Política de Privacidade.</p>
+        </div>
+        <p class="auth-footer">© <span data-current-year></span> Prazo Legal • Gestão jurídica sem complicação</p>
+      </div>
+    </section>
+
+    <div class="app-shell" id="appView" hidden>
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-head">
+          <a class="brand" href="#dashboard" aria-label="Prazo Legal — painel">
+            <span class="brand-mark" aria-hidden="true">
+              <svg viewBox="0 0 32 32"><path d="M16 3.4 28 9.8v12.4L16 28.6 4 22.2V9.8L16 3.4Z"/><path d="M11 16.2 14.3 19.5 21.6 12.2"/></svg>
+            </span>
+            <span>Prazo <strong>Legal</strong></span>
+          </a>
+          <button class="icon-button sidebar-close" id="closeSidebar" type="button" aria-label="Fechar menu">
+            <svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg>
+          </button>
+        </div>
+
+        <div class="workspace-pill">
+          <span class="workspace-avatar" id="workspaceInitials">PL</span>
+          <span><small>ESCRITÓRIO</small><strong id="workspaceName">Minha advocacia</strong></span>
+          <svg viewBox="0 0 24 24"><path d="m8 10 4 4 4-4"/></svg>
+        </div>
+
+        <nav class="nav-list" aria-label="Navegação principal">
+          <span class="nav-label">VISÃO GERAL</span>
+          <button class="nav-item is-active" type="button" data-page="dashboard">
+            <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg>
+            <span>Visão geral</span>
+          </button>
+          <button class="nav-item" type="button" data-page="agenda">
+            <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg>
+            <span>Agenda</span>
+          </button>
+          <span class="nav-label">COMPROMISSOS</span>
+          <button class="nav-item" type="button" data-page="prazos">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+            <span>Prazos</span><span class="nav-count" id="deadlineNavCount">0</span>
+          </button>
+          <button class="nav-item" type="button" data-page="audiencias">
+            <svg viewBox="0 0 24 24"><path d="M4 21h16M6 17h12M9 17V9m6 8V9M5 9h14L12 3 5 9Z"/></svg>
+            <span>Audiências</span>
+          </button>
+          <button class="nav-item" type="button" data-page="reunioes">
+            <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <span>Reuniões</span>
+          </button>
+          <span class="nav-label">GESTÃO</span>
+          <button class="nav-item" type="button" data-page="relatorios">
+            <svg viewBox="0 0 24 24"><path d="M4 19V9M10 19V5M16 19v-7M22 19V3"/></svg>
+            <span>Relatórios</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-bottom">
+          <button class="help-card" id="helpButton" type="button">
+            <span class="help-icon">?</span>
+            <span><strong>Precisa de ajuda?</strong><small>Veja o guia rápido</small></span>
+            <svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+          <div class="user-menu">
+            <span class="user-avatar" id="userInitials">US</span>
+            <span class="user-copy"><strong id="userName">Usuário</strong><small id="userEmail">usuario@email.com</small></span>
+            <button class="icon-button" id="logoutButton" type="button" aria-label="Sair da conta" title="Sair">
+              <svg viewBox="0 0 24 24"><path d="M10 17l5-5-5-5M15 12H3M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/></svg>
+            </button>
+          </div>
+        </div>
+      </aside>
+
+      <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+      <main class="main-area">
+        <header class="topbar">
+          <div class="topbar-left">
+            <button class="icon-button menu-toggle" id="openSidebar" type="button" aria-label="Abrir menu">
+              <svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+            </button>
+            <div class="page-title-wrap">
+              <span class="eyebrow" id="pageEyebrow">PAINEL</span>
+              <h1 id="pageTitle">Visão geral</h1>
+            </div>
+          </div>
+          <div class="topbar-actions">
+            <div class="sync-status" id="syncStatus" title="Status de armazenamento"><span></span><span id="syncStatusText">Modo local</span></div>
+            <button class="icon-button notification-button" id="notificationButton" type="button" aria-label="Lembretes e notificações">
+              <svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg>
+              <span class="notification-dot" id="notificationDot" hidden></span>
+            </button>
+            <button class="button button--primary add-event-button" id="addEventTop" type="button">
+              <svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg>
+              <span>Novo compromisso</span>
+            </button>
+          </div>
+        </header>
+
+        <div class="page-container">
+          <section class="page is-active" id="dashboardPage" data-page-panel="dashboard">
+            <div class="welcome-row">
+              <div>
+                <h2 id="welcomeMessage">Bom dia, <span>Usuário</span></h2>
+                <p id="dailySummary">Aqui está o resumo da sua agenda.</p>
+              </div>
+              <div class="today-chip"><span>HOJE</span><strong id="todayLabel"></strong></div>
+            </div>
+
+            <div class="stats-grid">
+              <article class="stat-card stat-card--danger">
+                <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="M12 8v5M12 17h.01M10.3 3.6 2.2 18a2 2 0 0 0 1.8 3h16a2 2 0 0 0 1.8-3L13.7 3.6a2 2 0 0 0-3.4 0Z"/></svg></div>
+                <div><span>ATRASADOS</span><strong id="overdueCount">0</strong><small id="overdueCaption">Nenhum item pendente</small></div>
+              </article>
+              <article class="stat-card stat-card--warning">
+                <div class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+                <div><span>VENCEM HOJE</span><strong id="todayCount">0</strong><small id="todayCaption">Agenda tranquila</small></div>
+              </article>
+              <article class="stat-card stat-card--green">
+                <div class="stat-icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></svg></div>
+                <div><span>PRÓXIMOS 7 DIAS</span><strong id="weekCount">0</strong><small id="weekCaption">Compromissos futuros</small></div>
+              </article>
+              <article class="stat-card stat-card--blue">
+                <div class="stat-icon"><svg viewBox="0 0 24 24"><path d="m4 12 5 5L20 6"/></svg></div>
+                <div><span>CONCLUÍDOS NO MÊS</span><strong id="completedCount">0</strong><small id="completedCaption">Continue assim</small></div>
+              </article>
+            </div>
+
+            <div class="dashboard-grid">
+              <article class="panel upcoming-panel">
+                <div class="panel-head">
+                  <div><span class="eyebrow">PRIORIDADES</span><h3>Próximos compromissos</h3></div>
+                  <button class="text-link" type="button" data-go-page="agenda">Ver agenda completa <span>→</span></button>
+                </div>
+                <div class="event-list event-list--compact" id="upcomingList"></div>
+              </article>
+
+              <article class="panel calendar-panel">
+                <div class="calendar-head">
+                  <button class="icon-button" id="prevMonth" type="button" aria-label="Mês anterior"><svg viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></svg></button>
+                  <div><span class="eyebrow">AGENDA</span><h3 id="calendarMonth">Outubro 2026</h3></div>
+                  <button class="icon-button" id="nextMonth" type="button" aria-label="Próximo mês"><svg viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></svg></button>
+                </div>
+                <div class="calendar-weekdays"><span>DOM</span><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SÁB</span></div>
+                <div class="calendar-grid" id="calendarGrid"></div>
+                <div class="calendar-legend"><span><i class="dot dot--deadline"></i>Prazo</span><span><i class="dot dot--hearing"></i>Audiência</span><span><i class="dot dot--meeting"></i>Reunião</span></div>
+              </article>
+            </div>
+          </section>
+
+          <section class="page" id="listPage" data-page-panel="list">
+            <div class="list-toolbar">
+              <div class="search-box">
+                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg>
+                <input id="eventSearch" type="search" placeholder="Buscar por título, processo ou cliente…" aria-label="Buscar compromissos" />
+              </div>
+              <select id="statusFilter" aria-label="Filtrar por status">
+                <option value="all">Todos os status</option>
+                <option value="pending">Pendentes</option>
+                <option value="completed">Concluídos</option>
+                <option value="overdue">Atrasados</option>
+              </select>
+              <select id="periodFilter" aria-label="Filtrar por período">
+                <option value="all">Todo o período</option>
+                <option value="today">Hoje</option>
+                <option value="week">Próximos 7 dias</option>
+                <option value="month">Este mês</option>
+              </select>
+              <button class="button button--outline" id="exportCalendar" type="button">
+                <svg viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg> Calendário
+              </button>
+            </div>
+            <div class="panel list-panel">
+              <div class="panel-head">
+                <div><span class="eyebrow" id="listEyebrow">AGENDA</span><h3 id="listTitle">Todos os compromissos</h3></div>
+                <span class="result-count" id="resultCount">0 itens</span>
+              </div>
+              <div class="event-list" id="fullEventList"></div>
+            </div>
+          </section>
+
+          <section class="page" id="reportsPage" data-page-panel="relatorios">
+            <div class="report-hero">
+              <div><span class="eyebrow eyebrow--light">ORGANIZAÇÃO E PRODUTIVIDADE</span><h2>Uma leitura clara da sua rotina.</h2><p>Acompanhe a distribuição dos compromissos e leve seus dados com você quando precisar.</p></div>
+              <svg viewBox="0 0 180 110" aria-hidden="true"><path d="M12 94h156M32 85V57M69 85V25M106 85V43M143 85V14"/><circle cx="32" cy="57" r="5"/><circle cx="69" cy="25" r="5"/><circle cx="106" cy="43" r="5"/><circle cx="143" cy="14" r="5"/></svg>
+            </div>
+            <div class="reports-grid">
+              <article class="panel report-chart-panel">
+                <div class="panel-head"><div><span class="eyebrow">DISTRIBUIÇÃO</span><h3>Tipos de compromisso</h3></div><span class="result-count">Total: <b id="reportTotal">0</b></span></div>
+                <div class="donut-layout">
+                  <div class="donut" id="reportDonut"><span><strong id="donutTotal">0</strong><small>itens</small></span></div>
+                  <div class="donut-legend" id="donutLegend"></div>
+                </div>
+              </article>
+              <article class="panel export-panel">
+                <span class="export-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"/><path d="M14 2v6h6M8 13h8M8 17h8M8 9h2"/></svg></span>
+                <h3>Seus dados, sempre disponíveis</h3>
+                <p>Exporte seus compromissos em CSV ou faça uma cópia de segurança completa em JSON.</p>
+                <button class="button button--primary button--wide" id="exportCsv" type="button">Exportar relatório CSV</button>
+                <div class="export-actions">
+                  <button class="text-link" id="backupJson" type="button">Baixar backup</button>
+                  <label class="text-link file-link">Restaurar backup<input id="importJson" type="file" accept="application/json" /></label>
+                </div>
+              </article>
+            </div>
+            <article class="panel productivity-panel">
+              <div class="panel-head"><div><span class="eyebrow">DESEMPENHO</span><h3>Resumo do mês</h3></div></div>
+              <div class="progress-grid" id="progressGrid"></div>
+            </article>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <dialog class="modal" id="eventDialog">
+      <form method="dialog" id="eventForm">
+        <div class="modal-head">
+          <div><span class="eyebrow" id="modalEyebrow">NOVO ITEM</span><h2 id="modalTitle">Novo compromisso</h2></div>
+          <button class="icon-button" type="button" data-close-dialog="eventDialog" aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+        </div>
+        <div class="modal-body">
+          <input id="eventId" type="hidden" />
+          <fieldset class="type-selector">
+            <legend>Tipo de compromisso</legend>
+            <label><input type="radio" name="eventType" value="prazo" checked /><span class="type-option type-option--deadline"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>Prazo</span></label>
+            <label><input type="radio" name="eventType" value="audiencia" /><span class="type-option type-option--hearing"><svg viewBox="0 0 24 24"><path d="M4 21h16M6 17h12M9 17V9m6 8V9M5 9h14L12 3 5 9Z"/></svg>Audiência</span></label>
+            <label><input type="radio" name="eventType" value="reuniao" /><span class="type-option type-option--meeting"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"/></svg>Reunião</span></label>
+          </fieldset>
+          <div class="field">
+            <label for="eventTitle">Título *</label>
+            <input id="eventTitle" type="text" placeholder="Ex.: Apresentar contestação" required maxlength="100" />
+          </div>
+          <div class="form-grid">
+            <div class="field"><label for="eventDate">Data *</label><input id="eventDate" type="date" required /></div>
+            <div class="field"><label for="eventTime">Horário</label><input id="eventTime" type="time" /></div>
+          </div>
+          <div class="form-grid">
+            <div class="field"><label for="eventProcess">Número do processo</label><input id="eventProcess" type="text" placeholder="0000000-00.0000.0.00.0000" /></div>
+            <div class="field"><label for="eventClient">Cliente / parte</label><input id="eventClient" type="text" placeholder="Nome do cliente" maxlength="100" /></div>
+          </div>
+          <div class="form-grid">
+            <div class="field"><label for="eventCourt">Vara / local / link</label><input id="eventCourt" type="text" placeholder="Ex.: 2ª Vara Cível ou link da reunião" maxlength="160" /></div>
+            <div class="field"><label for="eventResponsible">Responsável</label><input id="eventResponsible" type="text" placeholder="Nome do advogado" maxlength="100" /></div>
+          </div>
+          <div class="form-grid">
+            <div class="field"><label for="eventReminder">Lembrar com antecedência</label><select id="eventReminder"><option value="0">No horário</option><option value="30">30 minutos antes</option><option value="60">1 hora antes</option><option value="1440" selected>1 dia antes</option><option value="4320">3 dias antes</option><option value="10080">7 dias antes</option></select></div>
+            <label class="check-card"><input id="eventPriority" type="checkbox" /><span><strong>Marcar como prioridade</strong><small>Destacar este compromisso no painel</small></span></label>
+          </div>
+          <div class="field"><label for="eventNotes">Observações</label><textarea id="eventNotes" rows="3" placeholder="Inclua detalhes importantes, documentos necessários ou próximos passos…" maxlength="800"></textarea></div>
+        </div>
+        <div class="modal-footer">
+          <button class="button button--ghost" type="button" data-close-dialog="eventDialog">Cancelar</button>
+          <button class="button button--primary" id="saveEventButton" value="default" type="submit"><span>Salvar compromisso</span></button>
+        </div>
+      </form>
+    </dialog>
+
+    <dialog class="modal modal--small" id="notificationDialog">
+      <div class="modal-head">
+        <div><span class="eyebrow">LEMBRETES</span><h2>Central de notificações</h2></div>
+        <button class="icon-button" data-close-dialog="notificationDialog" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div class="modal-body notification-content">
+        <div class="notification-permission" id="notificationPermission">
+          <span><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9M10 21h4"/></svg></span>
+          <div><strong>Ative os alertas do navegador</strong><p>Receba lembretes enquanto o Prazo Legal estiver aberto.</p></div>
+          <button class="button button--outline" id="enableNotifications" type="button">Ativar</button>
+        </div>
+        <div class="reminder-list" id="reminderList"></div>
+        <p class="notification-note">Para alertas mesmo com o site fechado, exporte os itens para o calendário do celular ou configure um serviço de notificações no backend.</p>
+      </div>
+    </dialog>
+
+    <dialog class="modal modal--small" id="confirmDialog">
+      <div class="confirm-content">
+        <span class="confirm-icon"><svg viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M19 6l-1 15H6L5 6M10 11v5M14 11v5"/></svg></span>
+        <h2>Excluir compromisso?</h2>
+        <p>Esta ação não poderá ser desfeita.</p>
+        <div class="confirm-actions"><button class="button button--ghost" data-close-dialog="confirmDialog" type="button">Cancelar</button><button class="button button--danger" id="confirmDelete" type="button">Sim, excluir</button></div>
+      </div>
+    </dialog>
+
+    <dialog class="modal modal--small" id="helpDialog">
+      <div class="modal-head">
+        <div><span class="eyebrow">GUIA RÁPIDO</span><h2>Comece em poucos minutos</h2></div>
+        <button class="icon-button" data-close-dialog="helpDialog" type="button" aria-label="Fechar"><svg viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+      </div>
+      <div class="modal-body quick-guide">
+        <div><span>1</span><p><strong>Cadastre seus compromissos</strong>Use “Novo compromisso” para prazos, audiências e reuniões.</p></div>
+        <div><span>2</span><p><strong>Defina antecedência</strong>Escolha quando deseja ser lembrado e ative as notificações.</p></div>
+        <div><span>3</span><p><strong>Acompanhe e conclua</strong>O painel destaca urgências e mantém seu histórico organizado.</p></div>
+        <div><span>4</span><p><strong>Proteja os dados</strong>Publique a API Node.js com HTTPS e mantenha os segredos somente no servidor.</p></div>
+      </div>
+    </dialog>
+
+    <dialog class="modal modal--small" id="resetPasswordDialog">
+      <form id="resetPasswordForm">
+        <div class="modal-head">
+          <div><span class="eyebrow">SEGURANÇA</span><h2>Crie uma nova senha</h2></div>
+        </div>
+        <div class="modal-body">
+          <p class="notification-note">Use pelo menos 10 caracteres. Uma frase-senha longa é mais fácil de lembrar e mais difícil de adivinhar.</p>
+          <div class="field"><label for="newPassword">Nova senha</label><input id="newPassword" type="password" minlength="10" maxlength="128" autocomplete="new-password" required /></div>
+          <div class="field"><label for="confirmNewPassword">Confirmar nova senha</label><input id="confirmNewPassword" type="password" minlength="10" maxlength="128" autocomplete="new-password" required /></div>
+          <div class="form-alert" id="resetPasswordAlert" role="alert" hidden></div>
+        </div>
+        <div class="modal-footer"><button class="button button--primary" id="resetPasswordSubmit" type="submit"><span>Atualizar senha</span></button></div>
+      </form>
+    </dialog>
+
+    <div class="toast-region" id="toastRegion" aria-live="polite" aria-atomic="true"></div>
+
+    <script src="config.js"></script>
+    <script src="app.js" defer></script>
+  </body>
+</html>

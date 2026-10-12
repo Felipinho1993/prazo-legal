@@ -1,0 +1,31 @@
+{
+  "name": "prazo-legal",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Gestão segura de prazos processuais, audiências e reuniões.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node --watch server/index.js",
+    "start": "node server/index.js",
+    "db:migrate": "node server/migrate.js",
+    "check": "node --check public/app.js && node --check public/service-worker.js && node --check server/index.js && node --check server/auth.js && node --check server/events.js && node --test",
+    "test": "node --test"
+  },
+  "dependencies": {
+    "argon2": "^0.44.0",
+    "compression": "^1.8.1",
+    "connect-pg-simple": "^10.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-rate-limit": "^8.2.1",
+    "express-session": "^1.18.2",
+    "helmet": "^8.1.0",
+    "nodemailer": "^10.1.0",
+    "pg": "^8.16.3",
+    "zod": "^4.1.12"
+  }
+}

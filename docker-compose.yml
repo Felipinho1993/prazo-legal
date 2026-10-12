@@ -1,0 +1,45 @@
+services:
+  database:
+    image: postgres:17-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: prazo_legal
+      POSTGRES_USER: prazo_legal
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-altere-esta-senha}
+    volumes:
+      - prazo_legal_db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U prazo_legal -d prazo_legal"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  app:
+    build: .
+    restart: unless-stopped
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      NODE_ENV: production
+      PORT: 3000
+      DATABASE_URL: postgresql://prazo_legal:${POSTGRES_PASSWORD:-altere-esta-senha}@database:5432/prazo_legal
+      DATABASE_SSL: "false"
+      AUTO_MIGRATE: "true"
+      SESSION_SECRET: ${SESSION_SECRET:?Defina SESSION_SECRET no arquivo .env}
+      COOKIE_SECURE: ${COOKIE_SECURE:-false}
+      COOKIE_SAME_SITE: ${COOKIE_SAME_SITE:-lax}
+      PUBLIC_APP_URL: ${PUBLIC_APP_URL:-http://localhost:3000}
+      APP_ORIGINS: ${APP_ORIGINS:-http://localhost:3000}
+      ALLOW_SIGNUP: ${ALLOW_SIGNUP:-true}
+      SMTP_HOST: ${SMTP_HOST:-}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_SECURE: ${SMTP_SECURE:-false}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM: ${SMTP_FROM:-Prazo Legal <nao-responda@example.com>}
+    ports:
+      - "3000:3000"
+
+volumes:
+  prazo_legal_db:
